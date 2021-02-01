@@ -1,0 +1,17 @@
+name: APC523
+dependencies:
+  - python=3.7
+  - _ipyw_jlab_nb_ext_conf
+  - conda-forge::jupyterlab
+  - pandas
+  - conda-forge::ipywidgets
+  - conda-forge::nodejs
+  - conda-forge::ipympl
+  - conda-forge::tqdm
+  - conda-forge::mathjax
+  - jupyter
+  - numpy
+  - scipy
+  - matplotlib
+  - conda-forge::nbstripout
+  - conda-forge::jupyterlab_execute_time
