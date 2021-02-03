@@ -74,7 +74,7 @@ Note that `jupyterlab` extensions are not currently available through MyAdroit.
 ## `jupyterlab` extensions
 If you prefer to use `jupyterlab` there are some widgets that can help and should be installed through the terminal after activating the environment. Here I am installing packages related to `matplotlib` plotting module and [`collapsible_headings`](https://github.com/aquirdTurtle/Collapsible_Headings).
 ```
-jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyterlab-plotly plotlywidget @aquirdturtle/collapsible_headings
+jupyter labextension install @jupyter-widgets/jupyterlab-manager @aquirdturtle/collapsible_headings
 jupyter lab build
 ```
 In the environment there is also `jupyterlab_execute_time` package which can measure cell execution time. To enable insert `{"recordTiming": true}` in *Settings* > *Advanced Settings Editor* > *Notebook* > *User Preferences* or in `[jupyterlab User Settings directory]/@jupyterlab/notebook-extension/tracker.jupyterlab-settings`. `jupyterlab` User Settings can be retrieved through the command `jupyter lab path`.
