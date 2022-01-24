@@ -13,11 +13,12 @@ You will receive a helpdesk ticket after filling in the form, please wait until 
 3. Make sure you can login to `adroit` through either `ssh` or [MyAdroit](https://myadroit.princeton.edu/).\
 In MyAdroit, click on *Clusters* > *Adroit Cluster Shell Access*, or click [here](https://myadroit.princeton.edu/pun/sys/shell/ssh/adroit).
 ![MyAdroit shell](myadroit_console.png)
-4. Load `conda` in the cluster using `module` command
+4. Load `conda` in the cluster using `module` command.
 ```
-module load anaconda3
+module load anaconda3/2021.11
 ```
-5. Test that `conda list` give the list of currently installed packages.
+Note that you need to specify the `anaconda` version which you can check through `module avail` command.
+5. Test that `conda list` give the list of currently installed packages. You can check the current environment and the `conda` version using `conda info` command.
 ![Adroit `conda`](adroit_conda.png)
 
 ## Setting up `conda` environment
@@ -26,15 +27,20 @@ For this course `conda` environment provided in [`APC523.yml`](APC523.yml) shoul
 1. Copy the [environment file](APC523.yml) from this site to the location that can be accessed by your terminal.\
 You can use the web interface in MyAdroit by clicking *Files* > *Home Directory* or */scratch/network/[netid]*.
 ![MyAdroit file access](myadroit_files.png)
-2. Create the new `conda` environment by invoking
+2. Create the new `conda` environment by invoking the create environment command.
 ```
 conda env create -f [path_to_file]/APC523.yml
 ```
 Wait until the installation is finishes as it might take a while.
-3. Test that the environment can be activated through the shell
+3. Test that the environment can be activated through the shell.
 ```
 conda activate APC523
 ```
+4. If you need to remove the environment, you can do so by invoking this command.
+```
+conda remove --name APC523 --all
+```
+Verify that the environment is removed using `conda info --envs`.
 
 ## Running `jupyter` notebook in cluster
 1. Login to [MyAdroit](https://myadroit.princeton.edu/).
@@ -77,7 +83,13 @@ If you prefer to use `jupyterlab` there are some widgets that can help and shoul
 jupyter labextension install @jupyter-widgets/jupyterlab-manager @aquirdturtle/collapsible_headings
 jupyter lab build
 ```
-In the environment there is also `jupyterlab_execute_time` package which can measure cell execution time. To enable insert `{"recordTiming": true}` in *Settings* > *Advanced Settings Editor* > *Notebook* > *User Preferences* or in `[jupyterlab User Settings directory]/@jupyterlab/notebook-extension/tracker.jupyterlab-settings`. `jupyterlab` User Settings can be retrieved through the command `jupyter lab path`.
+
+### `jupyterlab_execute_time` extension
+Included in the environment file is the `jupyterlab_execute_time` package. This extension is useful to measure cell execution time.
+
+To enable this in `jupyterlab` insert `{"recordTiming": true}` in *Settings* > *Advanced Settings Editor* > *Notebook* > *User Preferences* or in `[jupyterlab User Settings directory]/@jupyterlab/notebook-extension/tracker.jupyterlab-settings`. Location of the `jupyterlab` user setting file can be retrieved through the command `jupyter lab path`.
+
+For more information about this extension you can check in their [GitHub page](https://github.com/deshaw/jupyterlab-execute-time).
 
 ----
 [Back to main page](../index.md)
